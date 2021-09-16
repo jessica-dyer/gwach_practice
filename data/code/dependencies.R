@@ -7,7 +7,7 @@
 
 
 packages <- c("redcapAPI", "dplyr", "ggplot2", "DiagrammeR", "tidyverse", "Hmisc", "tibble", 
-              "REDCapR", "lubridate", "plotly", "viridis")
+              "REDCapR", "lubridate", "plotly", "viridis", "gtsummary")
 
 new.packages <- packages[!(packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)

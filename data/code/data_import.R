@@ -17,7 +17,7 @@ if(endsWith(current_wd, "gwach_practice")){
 }
 
 source(paste(gwach_project_wd,"/data/code/dependencies.R", sep = ""))
-# source(paste(gwach_project_wd, "/01. Data/code/data_cleaning.R", sep = ""))
+source(paste(gwach_project_wd, "/data/code/data_cleaning.R", sep = ""))
 
 # EACH PERSON SHOULD HAVE A LOCAL R SCRIPT CALLED "keys.R" THAT YOU CAN SOURCE
 # SHOULD BE IN CODE FOLDER. GIT IS IGNORING THIS FILE NAME
@@ -51,4 +51,4 @@ if(!file.exists(paste(current_wd, "/data/raw_data/gwach_data_", last_friday, ".c
 }
 
 #### CLEAN SURVEY DATA #### 
-clean_all_survey_data(gwach_data, "gwach_survey")
+gwach_data_clean <- clean_all_survey_data(gwach_data, "gwach_survey")
