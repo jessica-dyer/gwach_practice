@@ -68,7 +68,10 @@ average_enrollment_per_week <- function(df = cumulative_enroll){
 }
 
 #### FUNCTION THAT GIVES YOU WHEN YOU WILL MEET YOUR GOAL IF YOU CONTINUE WITH ENROLLMENT RATE TO DATE #### 
-
+# when_meet_enrollment_goal_current_rate <- (){
+#         average_to_date <- average_enrollment_per_week()
+#         
+# }
 
 
 #### FUNCTION THAT TELLS YOU HOW MANY ENROLLMENTS YOU NEED TO AVERAGE PER WEEK TO REACH GOAL
