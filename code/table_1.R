@@ -15,6 +15,10 @@ if(endsWith(current_wd, "gwach_practice")){
         message("Got a WD that's not handled in the If-else ladder yet")
 }
 
+if(!exists("gwach_data")){
+        source(paste(gwach_project_wd,"/code/data_import.R", sep = ""))
+}
+
 create_variable_properties_list <- function(var_name_arg, 
                                             var_label_arg){
         return(list(
@@ -31,7 +35,7 @@ demo_variable_properties_list <- list(
 
 
 
-generate_labeled_df_for_table_1 <- function(df = gwach_survey, properties){
+generate_labeled_df_for_table_1 <- function(df = gwach_data_clean, properties){
         demographic_vars <- NULL
         for(var in properties){
                 demographic_vars <- append(demographic_vars, var$var_name)     
@@ -39,7 +43,7 @@ generate_labeled_df_for_table_1 <- function(df = gwach_survey, properties){
         
         temp <- 
              df %>% 
-             select(all_of(vars))
+             select(all_of(demographic_vars))
         
         demographic_vars_labels <- NULL
         for(var in properties){
@@ -51,12 +55,14 @@ generate_labeled_df_for_table_1 <- function(df = gwach_survey, properties){
      return(temp)
 }
 
-generate_labeled_df_for_table_1(properties = demo_variable_properties_list)
 
-table_1 <- 
-        gwach_survey %>%
+table_1 <-
+        gwach_data_clean %>%
         generate_labeled_df_for_table_1(properties = demo_variable_properties_list) %>%
         tbl_summary(
-           # by = demo_variable_properties_list$visit_type$var_label     
+           # by = demo_variable_properties_list$visit_type$var_label
         ) %>%
         add_n()
+
+table_1_ft <- table_1 %>%
+        as_flex_table()

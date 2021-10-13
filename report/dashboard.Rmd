@@ -1,0 +1,66 @@
+---
+title: "GWACh Practice Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+current_wd <- getwd()
+
+if(endsWith(current_wd, "gwach_practice")){
+        gwach_project_wd <- current_wd
+} else if (endsWith(current_wd, "/report")) {
+        gwach_project_wd <- str_remove(current_wd, "/report")
+} else {
+        message("Got a WD that's not handled in the If-else ladder yet")
+}
+
+source(paste(gwach_project_wd,"/code/data_import.R", sep = ""))
+source(paste(gwach_project_wd,"/code/table_1.R", sep = ""))
+source(paste(gwach_project_wd,"/code/enrollment_figure.R", sep = ""))
+
+```
+
+Column {data-width=400}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+cumulative_enrollment
+```
+
+
+### Chart B
+
+```{r}
+
+enrollment_by_week
+```
+
+Column {data-width=400}
+-----------------------------------------------------------------------
+
+### Chart C
+
+```{r}
+as_flex_table(table_1)
+```
+
+### Chart D
+```{r}
+total_enrollments <- nrow(gwach_data)
+target <- 3000
+average_enroll_by_week <- average_enrollment_per_week()
+date_meet_goal <- when_meet_enrollment_goal_current_rate()
+what_you_need <- calculate_average_needed_to_reach_goal(end_date = "2022-03-15", enrollment_goal = 3000)
+difference <- what_you_need - average_enroll_by_week
+```
+To date, your study has enrolled an average of `r average_enroll_by_week` participants per week for a total of `r total_enrollments` enrollments. If you continue on this trajectory, you will reach your target of `r target` participants on `r date_meet_goal`. 
+
+If you would like to complete enrollment by March 15, 2022, you will have to enroll an average of `r what_you_need` participants per week from now until March 15, 2022. That is a difference of `r difference` enrollments from your current average enrollment. 
+
+

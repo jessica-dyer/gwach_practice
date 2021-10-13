@@ -1,0 +1,41 @@
+---
+title: "Analysis Memo"
+author: "Jessica Dyer"
+date: "10/12/2021"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gt)
+
+current_wd <- getwd()
+
+if(endsWith(current_wd, "gwach_practice")){
+        gwach_project_wd <- current_wd
+} else if (endsWith(current_wd, "/report")) {
+        gwach_project_wd <- str_remove(current_wd, "/report")
+} else {
+        message("Got a WD that's not handled in the If-else ladder yet")
+}
+
+source(paste(gwach_project_wd,"/code/data_import.R", sep = ""))
+source(paste(gwach_project_wd,"/code/table_1.R", sep = ""))
+source(paste(gwach_project_wd,"/code/enrollment_figure.R", sep = ""))
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click theKnit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+table_1_ft
+```
+
+I can write things about this table calling specific details from the table without having to type in a number! For example: 
+
+
+The median (IQR) age among study participants is`r inline_text(table_1, variable = 'Age (years)')`. Additionally, `r inline_text(table_1, 'PHQ-2 category', level = 'PHQ-2 >=3')` participants have a PHQ-2 score greater than or equal to 3, requiring referral. 
+
