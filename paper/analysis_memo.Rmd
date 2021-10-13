@@ -24,6 +24,7 @@ source(paste(gwach_project_wd,"/code/table_1.R", sep = ""))
 source(paste(gwach_project_wd,"/code/enrollment_figure.R", sep = ""))
 ```
 
+# Heading 1
 ## R Markdown
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.

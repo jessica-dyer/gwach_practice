@@ -60,7 +60,7 @@ table_1 <-
         gwach_data_clean %>%
         generate_labeled_df_for_table_1(properties = demo_variable_properties_list) %>%
         tbl_summary(
-           # by = demo_variable_properties_list$visit_type$var_label
+         # by = demo_variable_properties_list$visit_type$var_label
         ) %>%
         add_n()
 

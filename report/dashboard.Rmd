@@ -59,6 +59,7 @@ date_meet_goal <- when_meet_enrollment_goal_current_rate()
 what_you_need <- calculate_average_needed_to_reach_goal(end_date = "2022-03-15", enrollment_goal = 3000)
 difference <- what_you_need - average_enroll_by_week
 ```
+
 To date, your study has enrolled an average of `r average_enroll_by_week` participants per week for a total of `r total_enrollments` enrollments. If you continue on this trajectory, you will reach your target of `r target` participants on `r date_meet_goal`. 
 
 If you would like to complete enrollment by March 15, 2022, you will have to enroll an average of `r what_you_need` participants per week from now until March 15, 2022. That is a difference of `r difference` enrollments from your current average enrollment. 
